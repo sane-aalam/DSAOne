@@ -17,38 +17,46 @@ const ld EPS = 1e-9;
 // possible moves can be either down or right
 // but what if we change direction up or left
 // (n,m) -> (0,0)
-// (destination) -> (source) reached 
+// (destination) -> (source) reached
+// Time Limit Exceeded -> Leetcode
+// we have to reduce overlapping subproblem - DP(needed)
 
-class Solution{
+class Solution
+{
 private:
-    int helper(int index1, int index2){
+    int helper(int index1, int index2)
+    {
 
         // base case
         // you have reached scoure, you have got one path
-        if(index1 == 0 && index2 == 0){
+        if (index1 == 0 && index2 == 0)
+        {
             return 1;
         }
-        // out of limit of matrix 
-        if(index1 < 0 or index2 < 0){
+        // out of limit of matrix
+        if (index1 < 0 or index2 < 0)
+        {
             return 0;
         }
 
         // possible moves can be either up or left
-        int up = helper(index1-1, index2);
-        int left = helper(index1, index2-1);
+        int up = helper(index1 - 1, index2);
+        int left = helper(index1, index2 - 1);
         return up + left;
     }
+
 public:
     int NumberOfPath(int a, int b)
     {
         int n = a;
         int m = b;
-        int possiblePaths =  helper(n-1,m-1);
+        int possiblePaths = helper(n - 1, m - 1);
         return possiblePaths;
     }
 };
 
-int main(){
+int main()
+{
     // taking total testcases
     int t;
     cin >> t;
