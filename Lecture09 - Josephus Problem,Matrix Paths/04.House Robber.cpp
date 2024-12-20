@@ -30,5 +30,6 @@ class Solution {
         int n = arr.size() - 1;
         // the maximum amount he can loot.
         int maximumAmount = helper(n,arr);
+        return maximumAmount;
     }
 };
